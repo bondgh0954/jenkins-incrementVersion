@@ -56,7 +56,7 @@ pipeline{
             sh "git remote set-url origin https://${USER}:${PASS}@github.com/bondgh0954/jenkins-incrementVersion.git "
             sh 'git add .'
             sh 'git commit -m "new version"'
-            sh 'git push origin HEAD:master'
+            sh 'git push origin HEAD:jenkins-job'
 
           }
         }

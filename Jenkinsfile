@@ -53,10 +53,10 @@ pipeline{
             sh 'git config user.email "jenkins@example.com"'
             sh 'git config user.name "jenkins"'
 
-            sh 'git remote set-url origin https://${USER}:${PASS}@github.com/bondgh0954/jenkins-incrementVersion.git '
+            sh "git remote set-url origin https://${USER}:${PASS}@github.com/bondgh0954/jenkins-incrementVersion.git "
             sh 'git add .'
             sh 'git commit -m "new version"'
-            sh 'git push origin'
+            sh 'git push origin HEAD:master'
 
           }
         }

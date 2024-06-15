@@ -50,8 +50,8 @@ pipeline{
           echo 'commit version change into git repository'
           withCredentials([usernamePassword(credentialsId:'github-credentials',usernameVariable:'USER',passwordVariable:'PASS')]){
 
-            sh 'git config user.email "jenkins@example.com"'
-            sh 'git config user.name "jenkins"'
+            sh 'git config --global user.email "jenkins@example.com"'
+            sh 'git config --global user.name "jenkins"'
 
             sh "git remote set-url origin https://${USER}:${PASS}@github.com/bondgh0954/jenkins-incrementVersion.git "
             sh 'git add .'

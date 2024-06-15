@@ -37,5 +37,30 @@ pipeline{
         }
       }
     }
+    stage('deploy'){
+      steps{
+        script{
+          echo 'deploying application'
+        }
+      }
+    }
+    stage('commit version'){
+      steps{
+        script{
+          echo 'commit version change into git repository'
+          withCredentials([usernamePassword(credentialsId:'github-credentials',usernameVariable:'USER',passwordVariable:'PASS')]){
+
+            sh 'git config user.email "jenkins@example.com"'
+            sh 'git config user.name "jenkins"'
+            
+            sh 'git remote set-url origin https://${USER}:${PASS}@github.com/bondgh0954/jenkins-incrementVersion.git '
+            sh 'git add .'
+            sh 'git commit -m "new version"'
+            sh 'git push origin HEAD:master'
+
+          }
+        }
+      }
+    }
   }
 }
